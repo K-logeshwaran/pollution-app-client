@@ -1,6 +1,9 @@
 import { useState,useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function UserReg() {
+    const navigator = useNavigate();
     const [name,setName] = useState("");
     const [address,setAddress] = useState("");
     const [phno,setPhno] = useState("");
@@ -20,14 +23,22 @@ function UserReg() {
     return ( 
         <form 
             className="indexpg userpg"
-            onSubmit={e=>{
+            onSubmit={async e=>{
                 e.preventDefault()
                 if(password!==conPassword){
                     setErr("Plz Enter Confirm Password Correctly")
                     return
                 }
-                let vals = {name,address,phno,email,password,conPassword,vhcNo,dob,district,country,pincode,state}
+                let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
+                let res = await axios.post("http://localhost:5000/user",vals)
+                console.log(res.data);
                 console.log(vals);
+                if(res.data.status==200){
+                    alert("Account created");
+                    navigator("/login",{replace:true})
+                }else if(res.data.status==409){
+                    alert(res.data.message)
+                };
             }}
         >
             <h2 className="heading">Fill up the form to Register</h2>

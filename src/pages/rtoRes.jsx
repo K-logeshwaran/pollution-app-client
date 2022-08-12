@@ -1,5 +1,9 @@
 import { useState,useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function ROTReg() {
+    const navigator = useNavigate();
     const [rtoName,setRtoName] = useState("");
     const [rtoID,setRtoID] = useState("");
     const [rtoAddress,setRtoAddress] = useState("");
@@ -10,13 +14,14 @@ function ROTReg() {
     const [pincode,setPincode] = useState("");
     const [state,setSta] = useState("");
     const [error,setErr] = useState("");
+    const [email,setEmail] = useState("");
     useEffect(()=>{
         setErr("");
     },[password,conPassword]);
     return ( 
         <form 
             className="indexpg userpg"
-            onSubmit={e=>{
+            onSubmit={async e=>{
                 e.preventDefault()
                 console.log("hi");
                 console.log(rtoAddress);
@@ -25,8 +30,16 @@ function ROTReg() {
                     setErr("Plz Enter Confirm Password Correctly")
                     return
                 }
-                let vals = {rtoName,rtoAddress,rtoID,password,conPassword,district,country,pincode,state}
+                let vals = {rtoName,rtoAddress,rtoID,password,district,country,pincode,state,email}
+                let res =await axios.post("http://localhost:5000/rto",vals);
+                console.log(res);
                 console.log(vals);
+                if(res.data.status==200){
+                    alert("Account created");
+                    navigator("/login",{replace:true})
+                }else if(res.data.status==409){
+                    alert(res.data.message)
+                };
             }}
         >
             <h2 className="heading">Fill up the form to Register</h2>
@@ -38,6 +51,10 @@ function ROTReg() {
             <div className="fields">
                 <label htmlFor="rtoaddress">RTO-Address</label>
                 <input required onChange={e=>setRtoAddress(e.target.value)} id="rtoaddress"  />
+            </div>
+            <div className="fields">
+                <label htmlFor="email">Email-Id</label>
+                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
             </div>
             <div className="fields">
                 <label htmlFor="pincode">Pincode</label>

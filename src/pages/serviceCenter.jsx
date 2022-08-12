@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
-
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function ServiceReg() {
+    const navigator = useNavigate();
     const [serCenName,setSerCenName] = useState("");
     const [serCenAddress,setSerCenAddress] = useState("");
     const [password,setPassword] = useState("");
@@ -9,18 +11,28 @@ function ServiceReg() {
     const [country,setCountry] = useState("");
     const [pincode,setPincode] = useState("");
     const [state,setSta] = useState("");
+    const [email,setEmail] = useState("");
     const [error,setErr] = useState("");
     return ( 
         <form 
             className="indexpg userpg"
-            onSubmit={e=>{
+            onSubmit={async e=>{
                 e.preventDefault()
                 if(password!==conPassword){
                     setErr("Plz Enter Confirm Password Correctly")
                     return
                 }
-                let vals = {serCenAddress,serCenName,password,conPassword,district,country,pincode,state}
+                let vals = {serCenAddress,serCenName,password,district,country,pincode,state,email}
                 console.log(vals);
+                let res =await axios.post("http://localhost:5000/serviceCenter",vals);
+                console.log(res);
+                console.log(vals);
+                if(res.data.status==200){
+                    alert("Account created");
+                    navigator("/login",{replace:true})
+                }else if(res.data.status==409){
+                    alert(res.data.message)
+                };
             }}
         >
             <h2 className="heading">Fill up the form to Register</h2>
@@ -31,6 +43,10 @@ function ServiceReg() {
             <div className="fields">
                 <label htmlFor="aadno">Address</label>
                 <input required onChange={e=>setSerCenAddress(e.target.value)} id="aadno"  />
+            </div>
+            <div className="fields">
+                <label htmlFor="email">Email-Id</label>
+                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
             </div>
             <div className="fields">
                 <label htmlFor="pincode">Pincode</label>
