@@ -1,27 +1,42 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
+import { useState,useEffect } from "react";
+
+
 
 function Rtopg() {
-    const usrContext = useContext(AuthContext)
+        const [rtoData,setRtodata]= useState(null);
+        useEffect(()=>{
+            const getData = async ()=>{
+                let res = await axios.get("http://localhost:5000/rto",{
+                    headers:{
+                        "x-access-token":sessionStorage.getItem("rtoToken"), 
+                    }
+                });
+                console.log(res.data);
+                setRtodata(res.data.rto);
+            }
+                getData();
+                console.log("MOUNTED");
+            },[]);
     return ( 
         <>
         {
-            usrContext.token == undefined ?
+            sessionStorage.getItem("rtoToken") == undefined ?
             <h1>No Access</h1>
             :
             <section className="rto">
             <table border = "1">
                 <tr>
                     <td className="names">Name</td>
-                    <td>Value</td>
+                    <td>{rtoData?.rtoName}</td>
                 </tr>
                 <tr>
-                    <td className="names">Vehicle No</td>
-                    <td>Value</td>
+                    <td className="names">RTO ID</td>
+                    <td>{rtoData?.rtoId}</td>
                 </tr>
                 <tr>
-                    <td className="names" >Unique Id</td>
-                    <td>Value</td>
+                    <td className="names" >Email-Id</td>
+                    <td>{rtoData?.email}</td>
                 </tr>
             </table>
             <div className="section-2">

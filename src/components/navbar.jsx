@@ -1,4 +1,4 @@
-function NavBar({Loc}) {
+function NavBar({Loc,nav}) {
     return ( 
         <div className="navbar">
             <div onClick={()=>Loc("home")}>
@@ -13,7 +13,11 @@ function NavBar({Loc}) {
                 </span>
                 <h4>Edit</h4>   
             </div>
-            <div onClick={()=>Loc("logout")}>
+            <div onClick={()=>{
+                sessionStorage.removeItem("userToken")
+                nav("/login",{replace:true})
+                Loc("logout")
+            }}>
                 <span style={{"fontSize":"30px"}} class="material-symbols-outlined" >
                     person
                 </span>

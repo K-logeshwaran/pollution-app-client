@@ -1,11 +1,25 @@
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import axios from "axios";
+import { useState,useEffect } from "react";
+
 function ServiceCenter() {
-    const usrContext = useContext(AuthContext)
+    const [serCenData,setSerCenData]= useState(null);
+    useEffect(()=>{
+        const getData = async ()=>{
+            let res = await axios.get("http://localhost:5000/sercen",{
+                headers:{
+                    "x-access-token":sessionStorage.getItem("serCenToken"), 
+                }
+            });
+            console.log(res.data);
+            serCenData(res.data.rto);
+        }
+            getData();
+            console.log("MOUNTED");
+        },[]);
     return ( 
         <>
             {
-                usrContext.token != undefined ?
+                sessionStorage.getItem("serCenToken") != undefined ?
                 <section className="serviceCenter">
                 <form  className="form1">
                 <h1 className="heading" style={{"padding":"1rem","marginTop":".5rem"}} >Service Center</h1>

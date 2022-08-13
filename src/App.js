@@ -16,8 +16,10 @@ import { AuthContext } from "./context/AuthContext";
 
 function App() {
   const [token,setToken] = useState();
+  const [rtoToken,setRtoToken] = useState();
+  const [serCentoken,setSerCenToken] = useState();
   return (
-    <AuthContext.Provider value={{token,setToken}}>
+    <AuthContext.Provider value={{token,setToken,rtoToken,setRtoToken,serCentoken,setSerCenToken}}>
       <Routes>
         <Route element={<IndexPage/>} path="/"/>
         <Route element={<Login/>} path="/login"/>

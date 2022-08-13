@@ -28,6 +28,7 @@
     -->
     <title>React App</title>
   </head>
+  <!-- <link rel="manifest" href="manifest.json"> -->
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
@@ -36,8 +37,21 @@
       if('serviceWorker' in navigator|| navigator.serviceWorker) {
           window.addEventListener('load', () => {
               navigator.serviceWorker.register('./serviceworker.js')
-                  .then((reg) => console.log('Success: ', reg.scope))
+                  .then((reg) => {
+                    console.log(reg);
+                    console.log('Success: ', reg.scope)
+                  })
                   .catch((err) => console.log('Failure: ', err));
+              // navigator.serviceWorker.getRegistration().then(reg=>{
+              //         reg.pushManager.subscribe({
+              //             userVisibleOnly:true
+              //         }).then(sub=>{
+              //             console.log(sub);
+              //             localStorage.setItem("subObj",JSON.stringify(sub))
+              //             console.info(sub.endpoint);
+              //             console.info(sub.getKey());
+              //         })
+              //     })  
           })
       }
   </script>
