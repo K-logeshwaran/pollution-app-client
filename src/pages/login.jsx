@@ -3,7 +3,7 @@ import {useState,useContext
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import play from '../utils/util';
 function Login() {
     const [changePassword,setChangePassword] = useState(false);
     const [email,setEmail] = useState("");
@@ -60,40 +60,48 @@ function Login() {
                         e.preventDefault() ;
                         let vals = {email,password,role},type="",res={},url;
                         console.log(vals);
-                        if(vals.role == ""){
-                            type = "";
-                            alert("Please Choose your role!");
-                        }else if(vals.role=="RTO"){
-                            type = "/rto"
-                            url = "http://localhost:5000/login"+type;
-                            res = await axios.post(url,vals)
-                            usrContext.setToken(res.data.token)
-                            sessionStorage.setItem("rtoToken",res.data.token);
-                        }else if(vals.role=="Service Center"){
-                            type = "/sercen";
-                            url = "http://localhost:5000/login"+type;
-                            res = await axios.post(url,vals)
-                            usrContext.setToken(res.data.token)
-                            sessionStorage.setItem("serCenToken",res.data.token);
-                        }else if(vals.role == "User"){
-                            type = "/user";
-                            url = "http://localhost:5000/login"+type;
-                            res = await axios.post(url,vals)
-                            usrContext.setToken(res.data.token)
-                            sessionStorage.setItem("userToken",res.data.token);
+                        try{
+                            if(vals.role == ""){
+                                await play();
+                                type = "";
+                                alert("Please Choose your role!");
+                            }else if(vals.role=="RTO"){
+                                type = "/rto"
+                                url = "http://localhost:5000/login"+type;
+                                res = await axios.post(url,vals)
+                                usrContext.setToken(res.data.token)
+                                sessionStorage.setItem("rtoToken",res.data.token);
+                            }else if(vals.role=="Service Center"){
+                                type = "/sercen";
+                                url = "http://localhost:5000/login"+type;
+                                res = await axios.post(url,vals)
+                                usrContext.setToken(res.data.token)
+                                sessionStorage.setItem("serCenToken",res.data.token);
+                            }else if(vals.role == "User"){
+                                type = "/user";
+                                url = "http://localhost:5000/login"+type;
+                                res = await axios.post(url,vals)
+                                usrContext.setToken(res.data.token)
+                                sessionStorage.setItem("userToken",res.data.token);
+                            }
+                            if(res.data.type=="user"){
+                                navigator("/userView",{replace:true})
+                            }
+                            else if(res.data.type=="sercen"){
+                                navigator("/serviceCenterView",{replace:true})
+                            }
+                            if(res.data.type=="rto"){
+                                navigator("/rtoView",{replace:true})
+                            }
+                        }catch(err){
+                            await play();
+                            console.error(err.response)
+                            alert(err.response.data)
                         }
-                        if(res.data.type=="user"){
-                            navigator("/userView",{replace:true})
-                        }
-                        else if(res.data.type=="sercen"){
-                            navigator("/serviceCenterView",{replace:true})
-                        }
-                        if(res.data.type=="rto"){
-                            navigator("/rtoView",{replace:true})
-                        }
+                        
                     }}
                 >Submit</button>
-                <h3 onClick={()=>setChangePassword(true)}>Forgot Password</h3>
+                {/* <h3 onClick={()=>setChangePassword(true)}>Forgot Password</h3> */}
             </form>
         }
     </div>
@@ -101,40 +109,3 @@ function Login() {
 }
 
 export default Login;
-
-
-   // if(res.data.status==200){
-                        //     alert("Account created");
-                        //     navigator("/rtoView",{replace:true})
-                        // }else if(res.data.status==409){
-                        //     alert(res.data.message)
-                        // };
-
-                        // let type = "",res ;
-                        
-                        // let vals = {email,password,role}
-                        // if(vals.role=="USER"){
-                        //     console.log("DFsdfsf");
-                        //     res = await axios.post("http://localhost:5000/login/user",vals)
-                        //     type="user"
-                        // }else if(vals.role=="RTO"){
-                        //     type="rto"
-                        //     res = await axios.post("http://localhost:5000/login/rto",vals)
-                        // }else if (vals.role=="Service Center"){
-                        //     type="sercen"
-                        //     res = await axios.post("http://localhost:5000/login/sercen",vals)
-                        // }
-                        // console.log(vals);
-                        // console.log(`http://localhost:5000/login/${type}`);
-                        // console.log(res.data);
-                        // console.log(vals);
-                        // usrContext.setToken(res.data.token)
-                        // if(res.data.type=="user"){
-                        //     navigator("/userView",{replace:true})
-                        // }
-                        // else if(res.data.type=="sercen"){
-                        //     navigator("/serviceCenterView",{replace:true})
-                        // }
-                        // if(res.data.type=="rto"){
-                        //     navigator("/rtoView",{replace:true})
-                        // }

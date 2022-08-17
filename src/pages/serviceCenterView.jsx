@@ -5,13 +5,13 @@ function ServiceCenter() {
     const [serCenData,setSerCenData]= useState(null);
     useEffect(()=>{
         const getData = async ()=>{
-            let res = await axios.get("http://localhost:5000/sercen",{
+            let res = await axios.get("http://localhost:5000/serviceCenter",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("serCenToken"), 
                 }
             });
             console.log(res.data);
-            serCenData(res.data.rto);
+            //serCenData(res.data.rto);
         }
             getData();
             console.log("MOUNTED");
@@ -21,7 +21,7 @@ function ServiceCenter() {
             {
                 sessionStorage.getItem("serCenToken") != undefined ?
                 <section className="serviceCenter">
-                <form  className="form1">
+                <form  method="POST" className="form1">
                 <h1 className="heading" style={{"padding":"1rem","marginTop":".5rem"}} >Service Center</h1>
                     <div className="fields sercen" style={{"width":"70%"}} >
                         <label htmlFor="name">Enter Unique Id: </label>

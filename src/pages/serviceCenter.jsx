@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import play from "../utils/util";
+import {checkPincode} from "../utils/verification"
 function ServiceReg() {
     const navigator = useNavigate();
     const [serCenName,setSerCenName] = useState("");
@@ -27,10 +29,16 @@ function ServiceReg() {
                 let res =await axios.post("http://localhost:5000/serviceCenter",vals);
                 console.log(res);
                 console.log(vals);
+                if(checkPincode(pincode)==false){
+                    await play();
+                    return alert("Enter a valid Pincode");
+                }
                 if(res.data.status==200){
+                    await play();
                     alert("Account created");
                     navigator("/login",{replace:true})
                 }else if(res.data.status==409){
+                    await play();
                     alert(res.data.message)
                 };
             }}

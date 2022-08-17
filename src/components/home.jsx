@@ -1,7 +1,35 @@
 function Home({userData}) {
     return ( 
-        <div className="indexpg userpg home">
-             <div className="fields">
+        <div className=" rto " style={{"display":"flex","justifyContent":"center","alignItems":"center"}}>
+            <table border = "1">
+                <tr>
+                    <td className="names">Name</td>
+                    <td>{userData.name}</td>
+                </tr>
+                <tr>
+                    <td className="names">Vehicle No :</td>
+                    <td>{userData.vhcNo}</td>
+                </tr>
+                <tr>
+                    <td className="names" >Email-Id</td>
+                    <td>{userData.email}</td>
+                </tr>
+                <tr>
+                    <td className="names" >Service Center</td>
+                    <td>userData.email</td>
+                </tr>
+                <tr>
+                    <td className="names" >Service Date</td>
+                    <td>userData.email</td>
+                </tr>
+            </table>
+        </div>
+     );
+}
+
+export default Home;
+
+{/* <div className="fields">
                 <h3 >Name :</h3>
                 <h3 style={{"margin":"1rem"}} >{userData.name}</h3>
             </div>
@@ -21,8 +49,4 @@ function Home({userData}) {
                 <h3 >Service Center :</h3>
                 <h3 style={{"margin":"1rem"}} >khhjk</h3>
             </div>
-        </div>
-     );
-}
-
-export default Home;
+        </div> */}

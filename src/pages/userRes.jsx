@@ -1,6 +1,8 @@
 import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {checkPhno,checkPincode,checkVhcNo} from "../utils/verification"
+import play from "../utils/util";
 
 function UserReg() {
     const navigator = useNavigate();
@@ -30,15 +32,33 @@ function UserReg() {
                     return
                 }
                 let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
-                let res = await axios.post("http://localhost:5000/user",vals)
-                console.log(res.data);
-                console.log(vals);
-                if(res.data.status==200){
-                    alert("Account created");
-                    navigator("/login",{replace:true})
-                }else if(res.data.status==409){
-                    alert(res.data.message)
-                };
+
+                if(checkPhno(phno)===false){
+                    await play()
+                    alert("Enter a valid Phone Number");
+                    console.log();
+                    return 0
+                }
+                else if(checkVhcNo(vhcNo)===false){
+                    await play();
+                    alert("Enter a valid Vehicle Number");
+                    return 0
+                }
+                else if(checkPincode(pincode)===false){
+                    await play()
+                    alert("Enter a valid Pincode");
+                    return 0
+                }else{
+                    let res = await axios.post("http://localhost:5000/user",vals)
+                    console.log(res.data);
+                    console.log(vals);
+                    if(res.data.status==200){
+                        alert("Account created");
+                        navigator("/login",{replace:true})
+                    }else if(res.data.status==409){
+                        alert(res.data.message)
+                    };
+                }
             }}
         >
             <h2 className="heading">Fill up the form to Register</h2>

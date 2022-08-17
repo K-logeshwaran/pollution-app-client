@@ -34,26 +34,26 @@
     <div id="root">
     </div>
     <script>
-      if('serviceWorker' in navigator|| navigator.serviceWorker) {
-          window.addEventListener('load', () => {
-              navigator.serviceWorker.register('./serviceworker.js')
-                  .then((reg) => {
-                    console.log(reg);
-                    console.log('Success: ', reg.scope)
-                  })
-                  .catch((err) => console.log('Failure: ', err));
-              // navigator.serviceWorker.getRegistration().then(reg=>{
-              //         reg.pushManager.subscribe({
-              //             userVisibleOnly:true
-              //         }).then(sub=>{
-              //             console.log(sub);
-              //             localStorage.setItem("subObj",JSON.stringify(sub))
-              //             console.info(sub.endpoint);
-              //             console.info(sub.getKey());
-              //         })
-              //     })  
-          })
-      }
+      // if('serviceWorker' in navigator|| navigator.serviceWorker) {
+      //     window.addEventListener('load', () => {
+      //         navigator.serviceWorker.register('./serviceworker.js')
+      //             .then((reg) => {
+      //               console.log(reg);
+      //               console.log('Success: ', reg.scope)
+      //             })
+      //             .catch((err) => console.log('Failure: ', err));
+      //         // navigator.serviceWorker.getRegistration().then(reg=>{
+      //         //         reg.pushManager.subscribe({
+      //         //             userVisibleOnly:true
+      //         //         }).then(sub=>{
+      //         //             console.log(sub);
+      //         //             localStorage.setItem("subObj",JSON.stringify(sub))
+      //         //             console.info(sub.endpoint);
+      //         //             console.info(sub.getKey());
+      //         //         })
+      //         //     })  
+      //     })
+      // }
   </script>
     <!--
       This HTML file is a template.

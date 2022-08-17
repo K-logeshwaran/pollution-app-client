@@ -5,6 +5,9 @@
   box-sizing: border-box;
 }
 /* #90caf9 */
+button{
+  cursor: pointer;
+}
 :root{
   --overlay:#272727;
   --bg:#121212;
@@ -20,7 +23,10 @@
   color: red;
   font-weight: bolder;
 }
-
+.lgout{
+  margin: 1rem;
+  font-size: 1.3rem;
+}
 body {
   margin: 0;
   font-family: 'Finlandica', sans-serif;
@@ -197,4 +203,32 @@ table, th, td {
   display: flex;
   width: 100%;
   padding: .2rem;
+}
+
+@media screen and (min-width: 950px) and (max-height: 1310px) {
+  .full,.center,table,.navbar,.indexpg ,.userpg,.serviceCenter,.rto{
+    width: 60vw;
+    margin: auto;
+  }
+  .navbar{
+    left: 20%;
+    margin-bottom: 1rem;
+  }
+  .navbar div{
+    cursor: pointer;
+  }
+  
+  .userpg::-webkit-scrollbar{
+    display: none;
+  }
+  .role{
+    cursor: pointer;
+  }
+  label{
+    cursor: pointer;  
+  }
+  .rto{
+    display: flex;
+    flex-direction: column;
+  }
 }

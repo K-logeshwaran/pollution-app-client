@@ -1,18 +1,42 @@
+import axios from "axios";
+import { useState,useEffect } from "react";
 function Edit() {
+    const [name,setName] = useState(null);
+    const [Vhcno,setVhcno] = useState(null);
+    const [serviceCenter,setServiceCenter] = useState(null);
+    async function handler(e) {
+        e.preventDefault();
+        console.log({name,Vhcno,serviceCenter});
+        let res = await axios.put("http://localhost:5000/user/update",
+            {name,Vhcno,serviceCenter},
+            {
+                headers:{
+                    "x-access-token":sessionStorage.getItem("userToken")
+                }
+            }
+        )
+        console.log(res);
+    }
     return ( 
-        <form  className="form2 full " style={{"paddingBottom":"2rem"}}>
+        <form  className="form2 full " onSubmit={handler} style={{"paddingBottom":"2rem"}}>
                 <h1  className="heading" style={{"padding":"1rem"}}>Edit:</h1>
                     <div className="fields sercen" >
                         <label htmlFor="name">Your Name </label>
-                        <input style={{"width":"70%"} }required  id="name"  />
+                        <input 
+                            onChange={e=>setName(e.target.value)}
+                            style={{"width":"70%"} } 
+                            required  
+                            id="name"
+                        />
                     </div>
                     <div className="fields sercen" >
                         <label htmlFor="name"> Vehicle Number:</label>
-                        <input style={{"width":"70%"} } required  id="name"  />
-                    </div>
-                    <div className="fields sercen">
-                        <label htmlFor="name">Service Center </label>
-                        <input style={{"width":"70%"} } required  id="name"  />
+                        <input 
+                            style={{"width":"70%"} }
+                            required  
+                            id="name"  
+                            onChange={e=>setVhcno(e.target.value)}
+                        />
                     </div>
                     <button 
                         type="submit"

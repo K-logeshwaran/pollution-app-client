@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
-
+import {useNavigate} from 'react-router-dom'
 
 
 function Rtopg() {
-        const [rtoData,setRtodata]= useState(null);
-        useEffect(()=>{
+    const nav = useNavigate();
+    const [rtoData,setRtodata]= useState(null);
+    useEffect(()=>{
             const getData = async ()=>{
                 let res = await axios.get("http://localhost:5000/rto",{
                     headers:{
@@ -24,36 +25,48 @@ function Rtopg() {
             sessionStorage.getItem("rtoToken") == undefined ?
             <h1>No Access</h1>
             :
-            <section className="rto">
-            <table border = "1">
-                <tr>
-                    <td className="names">Name</td>
-                    <td>{rtoData?.rtoName}</td>
-                </tr>
-                <tr>
-                    <td className="names">RTO ID</td>
-                    <td>{rtoData?.rtoId}</td>
-                </tr>
-                <tr>
-                    <td className="names" >Email-Id</td>
-                    <td>{rtoData?.email}</td>
-                </tr>
-            </table>
-            <div className="section-2">
-                <div className="fields" >
-                    <label htmlFor="name">Name</label>
-                    <input style={{"width":"70%"} } required  id="name"  />
+            <section className="rto" >
+                <div 
+                className="lgout"
+                style={{"cursor":"pointer"}}
+                onClick={()=>{
+                    sessionStorage.removeItem("rtoToken")
+                    nav("/login",{replace:true})
+                }}>
+                    <span style={{"fontSize":"30px","fontSize":"2.5rem"}} class="material-symbols-outlined" >
+                        person
+                    </span>
+                    <h4>Logout</h4>   
                 </div>
-                <div className="fields" >
-                    <label htmlFor="name">Name</label>
-                    <input style={{"width":"70%"} } required  id="name"  />
+                <table border = "1">
+                    <tr>
+                        <td className="names">Name</td>
+                        <td>{rtoData?.rtoName}</td>
+                    </tr>
+                    <tr>
+                        <td className="names">RTO ID</td>
+                        <td>{rtoData?.rtoId}</td>
+                    </tr>
+                    <tr>
+                        <td className="names" >Email-Id</td>
+                        <td>{rtoData?.email}</td>
+                    </tr>
+                </table>
+                <div className="section-2">
+                    <div className="fields" >
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
+                    <div className="fields" >
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
+                    <div className="fields">
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
                 </div>
-                <div className="fields">
-                    <label htmlFor="name">Name</label>
-                    <input style={{"width":"70%"} } required  id="name"  />
-                </div>
-            </div>
-       </section>
+            </section>
 
         }
        </>
