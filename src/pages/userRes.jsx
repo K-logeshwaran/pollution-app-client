@@ -33,13 +33,13 @@ function UserReg() {
                 }
                 let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
 
-                if(checkPhno(phno)===false){
-                    await play()
-                    alert("Enter a valid Phone Number");
-                    console.log();
-                    return 0
-                }
-                else if(checkVhcNo(vhcNo)===false){
+                // if(checkPhno(phno)===false){
+                //     await play()
+                //     alert("Enter a valid Phone Number");
+                //     console.log();
+                //     return 0
+                // }
+                if(checkVhcNo(vhcNo)===false){
                     await play();
                     alert("Enter a valid Vehicle Number");
                     return 0
@@ -49,7 +49,7 @@ function UserReg() {
                     alert("Enter a valid Pincode");
                     return 0
                 }else{
-                    let res = await axios.post("http://localhost:5000/user",vals)
+                    let res = await axios.post("https://pollution-app-backend.herokuapp.com/user",vals)
                     console.log(res.data);
                     console.log(vals);
                     if(res.data.status==200){
@@ -61,7 +61,7 @@ function UserReg() {
                 }
             }}
         >
-            <h2 className="heading">Fill up the form to Register</h2>
+            <h2 className="heading">Register Here</h2>
             <h3 className="err">{error}</h3>
             <div className="fields">
                 <label htmlFor="name">Name</label>

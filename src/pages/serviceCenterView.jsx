@@ -5,13 +5,13 @@ function ServiceCenter() {
     const [serCenData,setSerCenData]= useState(null);
     useEffect(()=>{
         const getData = async ()=>{
-            let res = await axios.get("http://localhost:5000/serviceCenter",{
+            let res = await axios.get("https://pollution-app-backend.herokuapp.com/serviceCenter",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("serCenToken"), 
                 }
             });
             console.log(res.data);
-            //serCenData(res.data.rto);
+            setSerCenData(res.data.user);
         }
             getData();
             console.log("MOUNTED");
@@ -21,11 +21,11 @@ function ServiceCenter() {
             {
                 sessionStorage.getItem("serCenToken") != undefined ?
                 <section className="serviceCenter">
-                <form  method="POST" className="form1">
+                <form  method="POST" action="https://pollution-app-backend.herokuapp.com/serviceCenter/file" encType="multipart/form-data" className="form1">
                 <h1 className="heading" style={{"padding":"1rem","marginTop":".5rem"}} >Service Center</h1>
                     <div className="fields sercen" style={{"width":"70%"}} >
-                        <label htmlFor="name">Enter Unique Id: </label>
-                        <input required  id="name"  />
+                        <label htmlFor="name">Email Id: </label>
+                        <h2 className="eee" >{serCenData?.email}</h2>
                     </div>
                     <div className="fields sercen" style={{"width":"70%"}} >
                         <label htmlFor="name"> Bill of Payment: </label>

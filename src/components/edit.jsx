@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState,useEffect } from "react";
+import { useState} from "react";
 function Edit() {
     const [name,setName] = useState(null);
     const [Vhcno,setVhcno] = useState(null);
@@ -7,7 +7,7 @@ function Edit() {
     async function handler(e) {
         e.preventDefault();
         console.log({name,Vhcno,serviceCenter});
-        let res = await axios.put("http://localhost:5000/user/update",
+        let res = await axios.put("https://pollution-app-backend.herokuapp.com/user/update",
             {name,Vhcno,serviceCenter},
             {
                 headers:{
@@ -16,6 +16,8 @@ function Edit() {
             }
         )
         console.log(res);
+        alert("Updated!")
+        window.location.reload()
     }
     return ( 
         <form  className="form2 full " onSubmit={handler} style={{"paddingBottom":"2rem"}}>

@@ -13,6 +13,7 @@ import UserReg from "./pages/userRes";
 import UserView from "./pages/userView";
 import { useState } from 'react';
 import { AuthContext } from "./context/AuthContext";
+import IndUsers from "./pages/indusers";
 
 function App() {
   const [token,setToken] = useState();
@@ -30,6 +31,7 @@ function App() {
         <Route element={<UserView/>} path="/userView"/>
         <Route element={<Rtopg/>} path="/rtoView"/>
         <Route element={<ServiceCenter/>} path="/serviceCenterView"/>
+        <Route element={<IndUsers/>} path="/users/:email"/>
       
      </Routes>
     </AuthContext.Provider>

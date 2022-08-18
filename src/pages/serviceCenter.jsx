@@ -26,7 +26,7 @@ function ServiceReg() {
                 }
                 let vals = {serCenAddress,serCenName,password,district,country,pincode,state,email}
                 console.log(vals);
-                let res =await axios.post("http://localhost:5000/serviceCenter",vals);
+                let res =await axios.post("https://pollution-app-backend.herokuapp.com/serviceCenter",vals);
                 console.log(res);
                 console.log(vals);
                 if(checkPincode(pincode)==false){
@@ -43,7 +43,7 @@ function ServiceReg() {
                 };
             }}
         >
-            <h2 className="heading">Fill up the form to Register</h2>
+            <h2 className="heading">Register Here</h2>
             <div className="fields">
                 <label htmlFor="sername">Service Center Name</label>
                 <input required id="sername" onChange={e=>setSerCenName(e.target.value)}  />

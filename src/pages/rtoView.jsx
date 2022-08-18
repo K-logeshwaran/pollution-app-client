@@ -1,24 +1,35 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,NavLink} from 'react-router-dom'
 
 
 function Rtopg() {
     const nav = useNavigate();
     const [rtoData,setRtodata]= useState(null);
+    const [persons,setPersons] = useState(()=>[]);
     useEffect(()=>{
-            const getData = async ()=>{
-                let res = await axios.get("http://localhost:5000/rto",{
+        const getData = async ()=>{
+                let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto",{
                     headers:{
                         "x-access-token":sessionStorage.getItem("rtoToken"), 
                     }
                 });
                 console.log(res.data);
                 setRtodata(res.data.rto);
-            }
-                getData();
-                console.log("MOUNTED");
-            },[]);
+        }
+        const getUsers = async ()=>{
+            let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto/users",{
+                headers:{
+                    "x-access-token":sessionStorage.getItem("rtoToken"), 
+                }
+            });
+            console.log(res.data);
+            setPersons(res.data.vals);
+        }
+        getData();
+        getUsers();
+        console.log("MOUNTED");
+    },[]);
     return ( 
         <>
         {
@@ -30,41 +41,46 @@ function Rtopg() {
                 className="lgout"
                 style={{"cursor":"pointer"}}
                 onClick={()=>{
+                    console.log(persons);
                     sessionStorage.removeItem("rtoToken")
                     nav("/login",{replace:true})
                 }}>
-                    <span style={{"fontSize":"30px","fontSize":"2.5rem"}} class="material-symbols-outlined" >
+                    <span style={{"fontSize":"30px","fontSize":"2.5rem"}} className="material-symbols-outlined" >
                         person
                     </span>
                     <h4>Logout</h4>   
                 </div>
                 <table border = "1">
-                    <tr>
-                        <td className="names">Name</td>
-                        <td>{rtoData?.rtoName}</td>
-                    </tr>
-                    <tr>
-                        <td className="names">RTO ID</td>
-                        <td>{rtoData?.rtoId}</td>
-                    </tr>
-                    <tr>
-                        <td className="names" >Email-Id</td>
-                        <td>{rtoData?.email}</td>
-                    </tr>
+                    <tbody>
+                        <tr>
+                            <td className="names">Name</td>
+                            <td>{rtoData?.rtoName}</td>
+                        </tr>
+                        <tr>
+                            <td className="names">RTO ID</td>
+                            <td>{rtoData?.rtoId}</td>
+                        </tr>
+                        <tr>
+                            <td className="names" >Email-Id</td>
+                            <td>{rtoData?.email}</td>
+                        </tr>
+                    </tbody>
+                    
                 </table>
                 <div className="section-2">
-                    <div className="fields" >
-                        <label htmlFor="name">Name</label>
-                        <input style={{"width":"70%"} } required  id="name"  />
-                    </div>
-                    <div className="fields" >
-                        <label htmlFor="name">Name</label>
-                        <input style={{"width":"70%"} } required  id="name"  />
-                    </div>
-                    <div className="fields">
-                        <label htmlFor="name">Name</label>
-                        <input style={{"width":"70%"} } required  id="name"  />
-                    </div>
+                    <h1>All Users</h1>
+                    {
+                        persons.length !=0 ?persons.map(e=>{
+                            console.log(e);
+                            return (
+                            <NavLink className="persons" to={`/users/${e.email}`}>
+                                <h1>{e.email}</h1>
+                            </NavLink>
+                            )
+                        }
+                        ):
+                        <h1>Loading..</h1>
+                    }
                 </div>
             </section>
 
@@ -147,6 +163,18 @@ export default Rtopg;
                 style={{"width":"100%"}}
                 type="submit"
                 >
+                <div className="fields" >
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
+                    <div className="fields" >
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
+                    <div className="fields">
+                        <label htmlFor="name">Name</label>
+                        <input style={{"width":"70%"} } required  id="name"  />
+                    </div>
                 Submit 
             </button>
         </form> */}

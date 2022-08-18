@@ -3,7 +3,7 @@ function Register() {
     const navigator = useNavigate();
     return (
     <div className="full indexpg">
-        <h1 className="heading">New Registeration as ? </h1>
+        <h1 className="heading">Register Now  </h1>
         <button className="options"
             onClick={()=>navigator('/userReg')}
         >

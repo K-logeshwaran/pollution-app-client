@@ -35,7 +35,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: var(--light-bg); */
-  background-image: url(https://images.unsplash.com/photo-1585495608941-d5ec3a2108c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFpciUyMHBvbGx1dGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60);
+  /* background-image: url(https://images.unsplash.com/photo-1585495608941-d5ec3a2108c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFpciUyMHBvbGx1dGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60); */
+  background-image: url(./assets/pollutionAppBg.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -163,7 +164,7 @@ code {
   margin: 1rem;
 }
 
-.sercen input{
+.sercen input,.eee{
   margin-left: 1.5rem;
 }
 table {
@@ -231,4 +232,14 @@ table, th, td {
     display: flex;
     flex-direction: column;
   }
+}
+
+.section-2{
+  height: 300px;
+  overflow-y: scroll;
+}
+
+.persons  {
+  padding: 1rem;
+  text-align: center;
 }
