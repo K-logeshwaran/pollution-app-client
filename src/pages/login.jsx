@@ -106,7 +106,7 @@ function Login() {
                 {/* <h3 onClick={()=>setChangePassword(true)}>Forgot Password</h3> */}
             </form>
         }
-        <NotiComp/>
+        {/* <NotiComp/> */}
     </div>
      );
 }
