@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import play from '../utils/util';
+import NotiComp from '../components/notification';
 function Login() {
     const [changePassword,setChangePassword] = useState(false);
     const [email,setEmail] = useState("");
@@ -105,6 +106,7 @@ function Login() {
                 {/* <h3 onClick={()=>setChangePassword(true)}>Forgot Password</h3> */}
             </form>
         }
+        <NotiComp/>
     </div>
      );
 }

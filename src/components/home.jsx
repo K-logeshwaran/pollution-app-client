@@ -16,11 +16,15 @@ function Home({userData}) {
                 </tr>
                 <tr>
                     <td className="names" >Service Center</td>
-                    <td>userData.email</td>
+                    <td>{userData.serviceCenter}</td>
                 </tr>
                 <tr>
                     <td className="names" >Service Date</td>
-                    <td>userData.email</td>
+                    <td>{userData.ndos}</td>
+                </tr>
+                <tr>
+                    <td className="names" >Emission Rate</td>
+                    <td>{userData.emission}</td>
                 </tr>
             </table>
         </div>

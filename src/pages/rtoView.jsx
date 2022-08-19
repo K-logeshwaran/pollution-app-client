@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState,useEffect } from "react";
 import {useNavigate,NavLink} from 'react-router-dom'
-
+import NotiComp from '../components/notification';
 
 function Rtopg() {
     const nav = useNavigate();
@@ -67,6 +67,7 @@ function Rtopg() {
                     </tbody>
                     
                 </table>
+                <NotiComp/>
                 <div className="section-2">
                     <h1>All Users</h1>
                     {
@@ -74,7 +75,7 @@ function Rtopg() {
                             console.log(e);
                             return (
                             <NavLink className="persons" to={`/users/${e.email}`}>
-                                <h1>{e.email}</h1>
+                                <h1>{e.vhcNo}</h1>
                             </NavLink>
                             )
                         }
@@ -99,7 +100,7 @@ export default Rtopg;
                     return
                 }
                 let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
-                let res = await axios.post("http://localhost:5000/user",vals)
+                let res = await axios.post("https://pollution-app-backend.herokuapp.com/user",vals)
                 console.log(res.data);
                 console.log(vals);
                 if(res.status==200){

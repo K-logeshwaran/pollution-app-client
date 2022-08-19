@@ -23,8 +23,8 @@ function UserView() {
             console.log(res);
             setUsrdata(res.data.user);
         }
-            getData();
-            console.log("MOUNTED");
+        getData();
+        console.log("MOUNTED");
         },[]);
     return ( 
         <>

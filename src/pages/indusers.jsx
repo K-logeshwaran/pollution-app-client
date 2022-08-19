@@ -42,6 +42,10 @@ function IndUsers() {
                                 <td className="names" >Phone Number</td>
                                 <td>{user?.phNo}</td>
                             </tr>
+                            <tr>
+                                <td className="names" >Emission</td>
+                                <td>{user?.emission}</td>
+                            </tr>
                         </tbody>
                         
             </table>
@@ -50,3 +54,4 @@ function IndUsers() {
 }
 
 export default IndUsers;
+

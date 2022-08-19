@@ -89,7 +89,7 @@ function UserReg() {
             </div>
             <div className="fields">
                 <label htmlFor="VehicleNumber">Vehicle Number</label>
-                <input required onChange={e=>setVhcNo(e.target.value)} id="VehicleNumber" />
+                <input required placeholder="  eg : TN 45 BD 4932" onChange={e=>setVhcNo(e.target.value)} id="VehicleNumber" />
             </div>
             <div className="fields">
                 <label htmlFor="dob">D.O.B</label>
