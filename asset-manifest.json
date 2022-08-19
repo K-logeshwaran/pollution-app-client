@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/pollution-app-client.github.io/static/css/main.c839e6e1.css",
+    "main.js": "/pollution-app-client.github.io/static/js/main.5d8674fd.js",
+    "static/media/pollutionAppBg.png": "/pollution-app-client.github.io/static/media/pollutionAppBg.c88145b50a946ccc1e82.png",
+    "static/media/Notification.mp3": "/pollution-app-client.github.io/static/media/Notification.9d74f5adfc6a37f2c093.mp3",
+    "index.html": "/pollution-app-client.github.io/index.html",
+    "main.c839e6e1.css.map": "/pollution-app-client.github.io/static/css/main.c839e6e1.css.map",
+    "main.5d8674fd.js.map": "/pollution-app-client.github.io/static/js/main.5d8674fd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c839e6e1.css",
+    "static/js/main.5d8674fd.js"
+  ]
+}
