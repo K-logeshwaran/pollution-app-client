@@ -8,7 +8,7 @@ function IndUsers() {
     useEffect(()=>{
         console.log(parms)
         const getUser = async ()=>{
-            let res = await axios.get("https://pollution-app-client.herokuapp.com/rto/user/"+parms.email,{
+            let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto/user/"+parms.email,{
                     headers:{
                         "x-access-token":sessionStorage.getItem("rtoToken"), 
                     }

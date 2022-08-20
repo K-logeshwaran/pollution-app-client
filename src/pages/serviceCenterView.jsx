@@ -9,7 +9,7 @@ function ServiceCenter() {
     let [file,setFile] = useState(null);
     useEffect(()=>{
         const getData = async ()=>{
-            let res = await axios.get("https://pollution-app-client.herokuapp.com/serviceCenter",{
+            let res = await axios.get("https://pollution-app-backend.herokuapp.com/serviceCenter",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("serCenToken"), 
                 }
@@ -31,7 +31,7 @@ function ServiceCenter() {
         let vals = {email,dos,ndos};
         console.log(file.current?.target?.files);
         console.log(formData.entries());
-        let res =await axios.post("https://pollution-app-client.herokuapp.com/serviceCenter/file",formData,{headers:{"x-access-token":sessionStorage.getItem("serCenToken")}});
+        let res =await axios.post("https://pollution-app-backend.herokuapp.com/serviceCenter/file",formData,{headers:{"x-access-token":sessionStorage.getItem("serCenToken")}});
         console.log(res.data);
     };
     
@@ -42,7 +42,7 @@ function ServiceCenter() {
                 <section className="serviceCenter">
                 <form  
                     method="POST" 
-                    action="https://pollution-app-client.herokuapp.com/serviceCenter/file" 
+                    action="https://pollution-app-backend.herokuapp.com/serviceCenter/file" 
                     encType="multipart/form-data" 
                     className="form1"
                     style={{"paddingBottom":"2rem"}}

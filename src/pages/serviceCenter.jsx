@@ -26,7 +26,7 @@ function ServiceReg() {
                 }
                 let vals = {serCenAddress,serCenName,password,district,country,pincode,state,email}
                 console.log(vals);
-                let res =await axios.post("https://pollution-app-client.herokuapp.com/serviceCenter",vals);
+                let res =await axios.post("https://pollution-app-backend.herokuapp.com/serviceCenter",vals);
                 console.log(res);
                 console.log(vals);
                 if(checkPincode(pincode)==false){

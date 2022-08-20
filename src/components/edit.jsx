@@ -7,7 +7,7 @@ function Edit() {
     async function handler(e) {
         e.preventDefault();
         console.log({name,Vhcno,serviceCenter});
-        let res = await axios.put("https://pollution-app-client.herokuapp.com/user/update",
+        let res = await axios.put("https://pollution-app-backend.herokuapp.com/user/update",
             {name,Vhcno,serviceCenter},
             {
                 headers:{

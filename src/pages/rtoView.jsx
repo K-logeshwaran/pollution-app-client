@@ -9,7 +9,7 @@ function Rtopg() {
     const [persons,setPersons] = useState(()=>[]);
     useEffect(()=>{
         const getData = async ()=>{
-                let res = await axios.get("https://pollution-app-client.herokuapp.com/rto",{
+                let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto",{
                     headers:{
                         "x-access-token":sessionStorage.getItem("rtoToken"), 
                     }
@@ -18,7 +18,7 @@ function Rtopg() {
                 setRtodata(res.data.rto);
         }
         const getUsers = async ()=>{
-            let res = await axios.get("https://pollution-app-client.herokuapp.com/rto/users",{
+            let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto/users",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("rtoToken"), 
                 }
@@ -86,7 +86,7 @@ function Rtopg() {
                                     <td>{e.emission}</td>
                                     <button
                                         onClick={async ele=>{
-                                            let res = await axios.post("https://pollution-app-client.herokuapp.com/rto/fine",
+                                            let res = await axios.post("https://pollution-app-backend.herokuapp.com/rto/fine",
                                                 {
                                                     token:sessionStorage.getItem("rtoToken"),
                                                     to:e.email,
