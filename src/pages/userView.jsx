@@ -16,7 +16,7 @@ function UserView() {
     const navgat = useNavigate()
     useEffect(()=>{
         const getData = async ()=>{
-            let res = await axios.get("http://localhost:5000/user",{
+            let res = await axios.get("https://pollution-app-client.herokuapp.com/user",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("userToken"), 
                 }

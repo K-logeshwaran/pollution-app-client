@@ -68,19 +68,19 @@ function Login() {
                                 alert("Please Choose your role!");
                             }else if(vals.role=="RTO"){
                                 type = "/rto"
-                                url = "http://localhost:5000/login"+type;
+                                url = "https://pollution-app-client.herokuapp.com/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("rtoToken",res.data.token);
                             }else if(vals.role=="Service Center"){
                                 type = "/sercen";
-                                url = "http://localhost:5000/login"+type;
+                                url = "https://pollution-app-client.herokuapp.com/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("serCenToken",res.data.token);
                             }else if(vals.role == "User"){
                                 type = "/user";
-                                url = "http://localhost:5000/login"+type;
+                                url = "https://pollution-app-client.herokuapp.com/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("userToken",res.data.token);

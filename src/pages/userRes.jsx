@@ -49,7 +49,7 @@ function UserReg() {
                     alert("Enter a valid Pincode");
                     return 0
                 }else{
-                    let res = await axios.post("http://localhost:5000/user",vals)
+                    let res = await axios.post("https://pollution-app-client.herokuapp.com/user",vals)
                     console.log(res.data);
                     console.log(vals);
                     if(res.data.status==200){

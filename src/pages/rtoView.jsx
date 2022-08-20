@@ -9,7 +9,7 @@ function Rtopg() {
     const [persons,setPersons] = useState(()=>[]);
     useEffect(()=>{
         const getData = async ()=>{
-                let res = await axios.get("http://localhost:5000/rto",{
+                let res = await axios.get("https://pollution-app-client.herokuapp.com/rto",{
                     headers:{
                         "x-access-token":sessionStorage.getItem("rtoToken"), 
                     }
@@ -18,7 +18,7 @@ function Rtopg() {
                 setRtodata(res.data.rto);
         }
         const getUsers = async ()=>{
-            let res = await axios.get("http://localhost:5000/rto/users",{
+            let res = await axios.get("https://pollution-app-client.herokuapp.com/rto/users",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("rtoToken"), 
                 }
@@ -86,7 +86,7 @@ function Rtopg() {
                                     <td>{e.emission}</td>
                                     <button
                                         onClick={async ele=>{
-                                            let res = await axios.post("http://localhost:5000/rto/fine",
+                                            let res = await axios.post("https://pollution-app-client.herokuapp.com/rto/fine",
                                                 {
                                                     token:sessionStorage.getItem("rtoToken"),
                                                     to:e.email,
@@ -125,7 +125,7 @@ export default Rtopg;
                     return
                 }
                 let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
-                let res = await axios.post("http://localhost:5000/user",vals)
+                let res = await axios.post("https://pollution-app-client.herokuapp.com/user",vals)
                 console.log(res.data);
                 console.log(vals);
                 if(res.status==200){
