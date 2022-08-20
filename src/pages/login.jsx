@@ -4,7 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import play from '../utils/util';
-import NotiComp from '../components/notification';
+// import NotiComp from '../components/notification';
 function Login() {
     const [changePassword,setChangePassword] = useState(false);
     const [email,setEmail] = useState("");
@@ -68,19 +68,19 @@ function Login() {
                                 alert("Please Choose your role!");
                             }else if(vals.role=="RTO"){
                                 type = "/rto"
-                                url = "https://pollution-app-backend.herokuapp.com/login"+type;
+                                url = "http://localhost:5000/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("rtoToken",res.data.token);
                             }else if(vals.role=="Service Center"){
                                 type = "/sercen";
-                                url = "https://pollution-app-backend.herokuapp.com/login"+type;
+                                url = "http://localhost:5000/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("serCenToken",res.data.token);
                             }else if(vals.role == "User"){
                                 type = "/user";
-                                url = "https://pollution-app-backend.herokuapp.com/login"+type;
+                                url = "http://localhost:5000/login"+type;
                                 res = await axios.post(url,vals)
                                 usrContext.setToken(res.data.token)
                                 sessionStorage.setItem("userToken",res.data.token);
@@ -106,7 +106,7 @@ function Login() {
                 {/* <h3 onClick={()=>setChangePassword(true)}>Forgot Password</h3> */}
             </form>
         }
-        {/* <NotiComp/> */}
+        
     </div>
      );
 }

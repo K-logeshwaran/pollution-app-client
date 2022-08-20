@@ -4,18 +4,14 @@ function NotiComp() {
 function buttonOnClick (){
     console.log("Clicked");
 	addNotification({
-	title: 'Warning',
-    message:"Hello",
+	title: 'Finr',
+    message:`Fine`,
 	native:true		
 	})
 };
 return (
 	<div className="App">
-	<Notifications />
-	<h1>Hey Geek!</h1>
-	<button onClick={()=>buttonOnClick()}>
-		Push Notification
-	</button>
+		<Notifications />
 	</div>
 );
 }

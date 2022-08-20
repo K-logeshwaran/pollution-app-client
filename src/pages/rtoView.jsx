@@ -9,7 +9,7 @@ function Rtopg() {
     const [persons,setPersons] = useState(()=>[]);
     useEffect(()=>{
         const getData = async ()=>{
-                let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto",{
+                let res = await axios.get("http://localhost:5000/rto",{
                     headers:{
                         "x-access-token":sessionStorage.getItem("rtoToken"), 
                     }
@@ -18,7 +18,7 @@ function Rtopg() {
                 setRtodata(res.data.rto);
         }
         const getUsers = async ()=>{
-            let res = await axios.get("https://pollution-app-backend.herokuapp.com/rto/users",{
+            let res = await axios.get("http://localhost:5000/rto/users",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("rtoToken"), 
                 }
@@ -70,18 +70,43 @@ function Rtopg() {
                 <NotiComp/>
                 <div className="section-2">
                     <h1>All Users</h1>
-                    {
+                    <table border = "1">
+                        <tbody>
+                        <tr>
+                                    <td style={{"padding":".5rem"}} className="names" >Vehicle Number</td>
+                                    <td>Emission</td>
+                        </tr>
+                        {
                         persons.length !=0 ?persons.map(e=>{
                             console.log(e);
                             return (
-                            <NavLink className="persons" to={`/users/${e.email}`}>
-                                <h1>{e.vhcNo}</h1>
-                            </NavLink>
+                            
+                                <tr>
+                                    <td style={{"padding":".5rem"}} className="names" ><NavLink className="persons" to={`/users/${e.email}`}>{e.vhcNo}</NavLink></td>
+                                    <td>{e.emission}</td>
+                                    <button
+                                        onClick={async ele=>{
+                                            let res = await axios.post("http://localhost:5000/rto/fine",
+                                                {
+                                                    token:sessionStorage.getItem("rtoToken"),
+                                                    to:e.email,
+                                                    fine:5000
+                                                }
+                                            )
+                                        }}
+                                    >Set Fine</button>
+                                </tr>
+                                
+                            
+                            
                             )
                         }
                         ):
                         <h1>Loading..</h1>
                     }
+                        </tbody>
+                    </table>
+                    
                 </div>
             </section>
 
@@ -100,7 +125,7 @@ export default Rtopg;
                     return
                 }
                 let vals = {name,address,phno,email,password,vhcNo,dob,district,country,pincode,state}
-                let res = await axios.post("https://pollution-app-backend.herokuapp.com/user",vals)
+                let res = await axios.post("http://localhost:5000/user",vals)
                 console.log(res.data);
                 console.log(vals);
                 if(res.status==200){

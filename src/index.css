@@ -242,4 +242,5 @@ table, th, td {
 .persons  {
   padding: 1rem;
   text-align: center;
+  color: var(--font);
 }

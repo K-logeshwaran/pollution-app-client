@@ -34,7 +34,7 @@ function ROTReg() {
                     return
                 }
                 let vals = {rtoName,rtoAddress,rtoID,password,district,country,pincode,state,email}
-                let res =await axios.post("https://pollution-app-backend.herokuapp.com/rto",vals);
+                let res =await axios.post("http://localhost:5000/rto",vals);
                 console.log(res);
                 console.log(vals);
                 if(checkPincode(pincode)==false){

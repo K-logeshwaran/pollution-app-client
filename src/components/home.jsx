@@ -1,3 +1,5 @@
+import NotiComp from "./notification";
+
 function Home({userData}) {
     return ( 
         <div className=" rto " style={{"display":"flex","justifyContent":"center","alignItems":"center"}}>
@@ -26,7 +28,11 @@ function Home({userData}) {
                     <td className="names" >Emission Rate</td>
                     <td>{userData.emission}</td>
                 </tr>
+                <div style={{"textAlign":"center"}} className="fine">
+                    <h1> Fine : {userData.fine} </h1>
+                </div>
             </table>
+            <NotiComp/>
         </div>
      );
 }

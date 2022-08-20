@@ -5,6 +5,7 @@ import Edit from "../components/edit";
 import {AuthContext} from '../context/AuthContext'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import addNotification from "react-push-notification";
 
 function UserView() {
     const [location,setLocation] = useState("home")
@@ -15,7 +16,7 @@ function UserView() {
     const navgat = useNavigate()
     useEffect(()=>{
         const getData = async ()=>{
-            let res = await axios.get("https://pollution-app-backend.herokuapp.com/user",{
+            let res = await axios.get("http://localhost:5000/user",{
                 headers:{
                     "x-access-token":sessionStorage.getItem("userToken"), 
                 }
@@ -25,6 +26,11 @@ function UserView() {
         }
         getData();
         console.log("MOUNTED");
+        addNotification({
+            title: 'Fine',
+            message:`Fine ${usrdata.fine}`,
+            native:true		
+            })
         },[]);
     return ( 
         <>
