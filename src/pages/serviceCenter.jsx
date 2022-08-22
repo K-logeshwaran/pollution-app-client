@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import play from "../utils/util";
 import {checkPincode} from "../utils/verification"
+import Title from "../components/title";
 function ServiceReg() {
     const navigator = useNavigate();
     const [serCenName,setSerCenName] = useState("");
@@ -43,6 +44,7 @@ function ServiceReg() {
                 };
             }}
         >
+            <Title/>
             <h2 className="heading">Register Here</h2>
             <div className="fields">
                 <label htmlFor="sername">Service Center Name</label>

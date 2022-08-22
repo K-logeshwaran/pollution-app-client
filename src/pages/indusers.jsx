@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect,useState } from "react";
 import {useParams} from "react-router-dom"
+import Title from "../components/title";
 
 function IndUsers() {
     let parms = useParams();
@@ -20,6 +21,7 @@ function IndUsers() {
     },[])
     return ( 
         <section className="rto" style={{"fontSize":"1.5rem"}}>
+            <Title/>
             <table  border = "1">
                         <tbody>
                             <tr>

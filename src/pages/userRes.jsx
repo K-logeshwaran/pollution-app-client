@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import {checkPhno,checkPincode,checkVhcNo} from "../utils/verification"
 import play from "../utils/util";
+import Title from "../components/title";
 
 function UserReg() {
     const navigator = useNavigate();
@@ -60,7 +61,8 @@ function UserReg() {
                     };
                 }
             }}
-        >
+        >   
+            <Title/>
             <h2 className="heading">Register Here</h2>
             <h3 className="err">{error}</h3>
             <div className="fields">

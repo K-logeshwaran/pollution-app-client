@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState,useEffect ,useRef} from "react";
+import Title from "../components/title";
 
 function ServiceCenter() {
     const [serCenData,setSerCenData]= useState(null);
@@ -48,6 +49,7 @@ function ServiceCenter() {
                     style={{"paddingBottom":"2rem"}}
                     onSubmit={handler}
                 >
+                <Title/>
                 <h1 className="heading" style={{"padding":"1rem","marginTop":".5rem"}} >Service Center</h1>
                     <div className="fields sercen" style={{"width":"70%"}} >
                         <label htmlFor="name">Email Id: </label>

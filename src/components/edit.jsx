@@ -20,7 +20,7 @@ function Edit() {
         window.location.reload()
     }
     return ( 
-        <form  className="form2 full " onSubmit={handler} style={{"paddingBottom":"2rem"}}>
+        <form  className="form2 full " onSubmit={handler} style={{"paddingBottom":"2rem","marginTop":"6rem"}}>
                 <h1  className="heading" style={{"padding":"1rem"}}>Edit:</h1>
                     <div className="fields sercen" >
                         <label htmlFor="name">Your Name </label>

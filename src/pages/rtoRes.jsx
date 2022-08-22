@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import play from '../utils/util'; 
 import { checkPincode } from "../utils/verification";
+import Title from "../components/title";
 
 function ROTReg() {
     const navigator = useNavigate();
@@ -51,6 +52,7 @@ function ROTReg() {
                 };
             }}
         >
+            <Title/>
             <h2 className="heading">Register Here</h2>
             <h3>{error}</h3>
             <div className="fields">

@@ -3,19 +3,20 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: var(--light-bg);
 }
 /* #90caf9 */
 button{
   cursor: pointer;
 }
 :root{
-  --overlay:#272727;
+  --overlay:hsl(0, 33%, 99%);
   --bg:#121212;
-  --font:#E2E2E2;
+  --font:#101010;
   --light-bg:#e3f2fd;
   --light-overlay:#42a5f5;
-  --light-font:#E2E2E2;
-  --head:#29b6f6;
+  --light-font:#fff;
+  --head:#29b6f6;  
 
 }
 
@@ -37,6 +38,7 @@ body {
   /* background-color: var(--light-bg); */
   /* background-image: url(https://images.unsplash.com/photo-1585495608941-d5ec3a2108c0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFpciUyMHBvbGx1dGlvbnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=600&q=60); */
   background-image: url(./assets/pollutionAppBg.png);
+  background-image: url(https://images.unsplash.com/photo-1561620831-9b2d86d81226?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -71,8 +73,10 @@ code {
   flex-direction: column;
   padding: 2rem;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
+  margin-top: 5rem;
+  height: 90vh;
+  margin-top: 10rem;
 }
 .heading{
   color: var(--light-font);
@@ -84,7 +88,7 @@ code {
   padding: 1rem;
   font-size: 1rem;
   font-weight: bold;
-  color: #fff;
+  color: var(--font);
   background-color: var(--overlay);
   border: .5px solid var(--overlay);
 }
@@ -244,3 +248,27 @@ table, th, td {
   text-align: center;
   color: var(--font);
 }
+
+.appName{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  display: flex;  
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  padding-left: 2rem;
+  width: 100vw;
+  margin-bottom: 2rem;
+}
+.appName img{
+  border-radius: 50%;
+  width: 4rem;
+}
+
+.appName h1{
+  align-self: center;
+  font-size: 2rem;
+}
+

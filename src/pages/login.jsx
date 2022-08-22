@@ -4,6 +4,7 @@ import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import play from '../utils/util';
+import Title from '../components/title';
 // import NotiComp from '../components/notification';
 function Login() {
     const [changePassword,setChangePassword] = useState(false);
@@ -14,10 +15,12 @@ function Login() {
     const navigator = useNavigate();
     return ( 
     <div className="center">
-        <h2 className="heading">Login!</h2>
+        <Title/>
+        <h2 className="heading" style={{"marginTop":"5rem"}}>Login!</h2>
         {
             changePassword === true ? 
             <form className="indexpg userpg">
+                
                 <div className="fields">
                     <label htmlFor="emailid">Email Id</label>
                     <input required id="emailid"  />

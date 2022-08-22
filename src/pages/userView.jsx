@@ -6,6 +6,7 @@ import {AuthContext} from '../context/AuthContext'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import addNotification from "react-push-notification";
+import Title from "../components/title";
 
 function UserView() {
     const [location,setLocation] = useState("home")
@@ -28,7 +29,7 @@ function UserView() {
         console.log("MOUNTED");
         addNotification({
             title: 'Fine',
-            message:`Fine ${usrdata.fine}`,
+            message:`Fine ${usrdata?.fine}`,
             native:true		
             })
         },[]);
@@ -39,6 +40,7 @@ function UserView() {
             <h1>Access Denied</h1>
             :
             <><div className="userView">
+                <Title/>
 
                         {location === "home" ?
                             <Home

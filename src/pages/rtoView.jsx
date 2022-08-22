@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState,useEffect } from "react";
 import {useNavigate,NavLink} from 'react-router-dom'
 import NotiComp from '../components/notification';
+import Title from "../components/title";
 
 function Rtopg() {
     const nav = useNavigate();
@@ -37,6 +38,7 @@ function Rtopg() {
             <h1>No Access</h1>
             :
             <section className="rto" >
+                <Title/>
                 <div 
                 className="lgout"
                 style={{"cursor":"pointer"}}

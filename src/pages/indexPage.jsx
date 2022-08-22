@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import Title from "../components/title";
 function dum () {
     if (!("Notification" in window)) {
         alert("Browser does not support notifications");
@@ -32,21 +33,24 @@ function dum () {
 function IndexPage() {
     const navigator = useNavigate();
     return ( 
-        <div className="full indexpg">
-            <h1 className="heading">Login or Register </h1>
-            <button className="options"
-                onClick={()=>navigator('/login')}
-            >
-                
-                Login 
-            </button>
-            <button 
-                className="options"
-                onClick={()=>navigator('/register')} 
-            >
-                New Register 
-            </button>
-        </div> 
+        <>
+            <Title/>
+            <div className="indexpg">
+                <h1 className="heading">Login / New User </h1>
+                <button className="options"
+                    onClick={()=>navigator('/login')}
+                >
+                    
+                    Login 
+                </button>
+                <button 
+                    className="options"
+                    onClick={()=>navigator('/register')} 
+                >
+                    New Register 
+                </button>
+            </div> 
+        </>
     );
 }
 
