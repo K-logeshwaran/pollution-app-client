@@ -51,12 +51,20 @@ function ServiceReg() {
                 <input required id="sername" onChange={e=>setSerCenName(e.target.value)}  />
             </div>
             <div className="fields">
+                <label htmlFor="email">Email-Id</label>
+                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
+            </div>
+            <div className="fields">
                 <label htmlFor="aadno">Address</label>
                 <input required onChange={e=>setSerCenAddress(e.target.value)} id="aadno"  />
             </div>
             <div className="fields">
-                <label htmlFor="email">Email-Id</label>
-                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
+                <label htmlFor="District">District</label>
+                <input required onChange={e=>setDistrict(e.target.value)} id="District" />
+            </div>
+            <div className="fields">
+                <label htmlFor="State">State</label>
+                <input required onChange={e=>setSta(e.target.value)} id="State" />
             </div>
             <div className="fields">
                 <label htmlFor="pincode">Pincode</label>
@@ -65,14 +73,6 @@ function ServiceReg() {
             <div className="fields">
                 <label htmlFor="Country">Country</label>
                 <input required onChange={e=>setCountry(e.target.value)} id="Country" />
-            </div>
-            <div className="fields">
-                <label htmlFor="State">State</label>
-                <input required onChange={e=>setSta(e.target.value)} id="State" />
-            </div>
-            <div className="fields">
-                <label htmlFor="District">District</label>
-                <input required onChange={e=>setDistrict(e.target.value)} id="District" />
             </div>
             <div className="fields">
                 <label htmlFor="password">Password</label>

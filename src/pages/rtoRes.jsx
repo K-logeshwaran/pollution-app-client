@@ -60,6 +60,10 @@ function ROTReg() {
                 <input required onChange={e=>setRtoName(e.target.value)} id="rtoname" />
             </div>
             <div className="fields">
+                <label htmlFor="email">Email-Id</label>
+                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
+            </div>
+            <div className="fields">
                 <label htmlFor="rtoid">RTO-ID</label>
                 <input required onChange={e=>setRtoID(e.target.value)} id="rtoid"  />
             </div>
@@ -68,25 +72,25 @@ function ROTReg() {
                 <input required onChange={e=>setRtoAddress(e.target.value)} id="rtoaddress"  />
             </div>
             <div className="fields">
-                <label htmlFor="email">Email-Id</label>
-                <input required onChange={e=>setEmail(e.target.value)} type="email" id="email"  />
-            </div>
-            <div className="fields">
-                <label htmlFor="pincode">Pincode</label>
-                <input required onChange={e=>setPincode(e.target.value)} id="pincode" />
-            </div>
-            <div className="fields">
-                <label htmlFor="Country">Country</label>
-                <input required onChange={e=>setCountry(e.target.value)} id="Country" />
+                <label htmlFor="District">District</label>
+                <input required onChange={e=>setDistrict(e.target.value)} id="District" />
             </div>
             <div className="fields">
                 <label htmlFor="State">State</label>
                 <input required onChange={e=>setSta(e.target.value)} id="State" />
             </div>
+
             <div className="fields">
-                <label htmlFor="District">District</label>
-                <input required onChange={e=>setDistrict(e.target.value)} id="District" />
+                <label htmlFor="pincode">Pincode</label>
+                <input required onChange={e=>setPincode(e.target.value)} id="pincode" />
             </div>
+            
+            <div className="fields">
+                <label htmlFor="Country">Country</label>
+                <input required onChange={e=>setCountry(e.target.value)} id="Country" />
+            </div>
+            
+           
             <div className="fields">
                 <label htmlFor="password">Password</label>
                 <input required onChange={e=>setPassword(e.target.value)} id="password" type="password" />

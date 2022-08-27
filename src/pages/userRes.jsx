@@ -70,33 +70,20 @@ function UserReg() {
                 <input required onChange={e=>setName(e.target.value)} id="name"  />
             </div>
             <div className="fields">
-                <label htmlFor="Address">Address</label>
-                <input required onChange={e=>setAddress(e.target.value)} id="Address"  />
+                <label htmlFor="email">Email Id</label>
+                <input required onChange={e=>setEmail(e.target.value)} id="email" type="email" />
             </div>
+
             <div className="fields">
                 <label htmlFor="phno">Phone Number</label>
                 <input required onChange={e=>setPhno(e.target.value)} id="phno" />
             </div>
+
             <div className="fields">
-                <label htmlFor="email">Email Id</label>
-                <input required onChange={e=>setEmail(e.target.value)} id="email" type="email" />
+                <label htmlFor="Address">Address</label>
+                <input required onChange={e=>setAddress(e.target.value)} id="Address"  />
             </div>
-            <div className="fields">
-                <label htmlFor="password">Password</label>
-                <input required onChange={e=>setPassword(e.target.value)} id="password" type="password" />
-            </div>
-            <div className="fields">
-                <label htmlFor="confirmpassword">Confirm Password</label>
-                <input required onChange={e=>setConPassword(e.target.value)} id="confirmpassword" type="password" />
-            </div>
-            <div className="fields">
-                <label htmlFor="VehicleNumber">Vehicle Number</label>
-                <input required placeholder="  eg : TN 45 BD 4932" onChange={e=>setVhcNo(e.target.value)} id="VehicleNumber" />
-            </div>
-            <div className="fields">
-                <label htmlFor="dob">D.O.B</label>
-                <input required onChange={e=>setDob(e.target.value)} id="dob" type="date" />
-            </div>
+            
             <div className="fields">
                 <label htmlFor="District">District</label>
                 <input required onChange={e=>setDistrict(e.target.value)} id="District" />
@@ -113,6 +100,25 @@ function UserReg() {
                 <label htmlFor="pincode">Pincode</label>
                 <input required onChange={e=>setPincode(e.target.value)} id="pincode" />
             </div>
+            <div className="fields">
+                <label htmlFor="dob">D.O.B</label>
+                <input required onChange={e=>setDob(e.target.value)} id="dob" type="date" />
+            </div>
+           
+            <div className="fields">
+                <label htmlFor="VehicleNumber">Vehicle Number</label>
+                <input required placeholder="  eg : TN 45 BD 4932" onChange={e=>setVhcNo(e.target.value)} id="VehicleNumber" />
+            </div>
+
+            <div className="fields">
+                <label htmlFor="password">Password</label>
+                <input required onChange={e=>setPassword(e.target.value)} id="password" type="password" />
+            </div>
+            <div className="fields">
+                <label htmlFor="confirmpassword">Confirm Password</label>
+                <input required onChange={e=>setConPassword(e.target.value)} id="confirmpassword" type="password" />
+            </div>
+
             <button 
                 className="options"
                 style={{"width":"100%"}}
